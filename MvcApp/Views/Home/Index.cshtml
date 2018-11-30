@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -6,3 +8,8 @@
 <h3>Home page of MVC app</h3>
 
 <p>Use this area to provide additional information.</p>
+
+@foreach (var header in Context.Request.Headers)
+{
+    <p>@header.Key : @string.Join(", ", header.Value)</p>
+}
