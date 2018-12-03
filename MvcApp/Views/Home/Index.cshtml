@@ -1,5 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Http.Features
 @using Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -13,3 +15,8 @@
 {
     <p>@header.Key : @string.Join(", ", header.Value)</p>
 }
+
+<p>@nameof(HttpContextAccessor.HttpContext.Connection.LocalIpAddress) : @HttpContextAccessor.HttpContext.Connection.LocalIpAddress</p>
+<p>@nameof(HttpContextAccessor.HttpContext.Connection.LocalPort) : @HttpContextAccessor.HttpContext.Connection.LocalPort</p>
+<p>@nameof(HttpContextAccessor.HttpContext.Connection.RemoteIpAddress) : @HttpContextAccessor.HttpContext.Connection.RemoteIpAddress</p>
+<p>@nameof(HttpContextAccessor.HttpContext.Connection.RemotePort) : @HttpContextAccessor.HttpContext.Connection.RemotePort</p>
