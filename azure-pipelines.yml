@@ -13,9 +13,8 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- script: | 
+- script: |
     dotnet build --configuration $(buildConfiguration)
     dotnet publish --configuration $(buildConfiguration) --output $BUILD_ARTIFACTSTAGINGDIRECTORY
-    displayName: 'dotnet build $(buildConfiguration)'
-    
- - task: PublishBuildArtifacts@1
+
+- task: PublishBuildArtifacts@1
